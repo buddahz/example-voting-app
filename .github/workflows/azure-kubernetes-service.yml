@@ -1,10 +1,8 @@
 name: Deploy to AKS
 
 on:
-  push:
-    branches:
-      - main  # Replace with your target branch
-
+  workflow_dispatch:
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
