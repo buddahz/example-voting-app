@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: 16  # Specify the Node.js version you want to use
 
-      - name: Install Dependencies
-        run: npm install  # Adjust as needed
-
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
