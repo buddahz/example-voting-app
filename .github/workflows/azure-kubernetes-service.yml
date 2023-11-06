@@ -1,0 +1,21 @@
+name: Deploy to AKS
+
+on:
+  push:
+    branches:
+      - main  # Replace with your target branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configure kubectl
+        run: az aks get-credentials --resource-group voting-app --name votingtest
+
+      - name: Deploy Kubernetes Manifests
+        run: |
+          kubectl apply -f k8s-specifications
