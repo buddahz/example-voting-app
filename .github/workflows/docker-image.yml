@@ -1,0 +1,31 @@
+name: Build and Push Docker Images to Azure Container Registry
+
+on:
+  push:
+    branches:
+      - main  # Replace with your target branch
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          loginServer: youracr.azurecr.io
+          username: ${{ secrets.AZURE_ACR_USERNAME }}
+          password: ${{ secrets.AZURE_ACR_PASSWORD }}
+
+      - name: Build and Push Docker Images
+        run: |
+          for dir in result vote worker; do
+            cd "$dir"
+            docker build -t youracr.azurecr.io/$dir:${{ github.run_number }} .
+            docker push youracr.azurecr.io/$dir:${{ github.run_number }}
+            cd ..
+          done
+
