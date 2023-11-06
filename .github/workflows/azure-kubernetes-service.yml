@@ -19,7 +19,7 @@ jobs:
         uses: azure/login@v1
         with:
          creds: ${{ secrets.AZURE_CREDENTIALS }}
-         enable-AzPSSession: true 
+         allow-no-subscriptions: true
 
       - name: Set AKS context
         uses: azure/login@v1
@@ -27,7 +27,7 @@ jobs:
          creds: ${{ secrets.AZURE_CREDENTIALS }}
          cluster-name: votingtest
          resource-group: voting-app
-         enable-AzPSSession: true 
+         allow-no-subscriptions: true
 
       - name: Configure kubectl
         run: az aks install-cli
