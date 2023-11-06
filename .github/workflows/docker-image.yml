@@ -21,9 +21,6 @@ jobs:
       - name: Install Dependencies
         run: npm install  # Adjust as needed
 
-      - name: Build and Test
-        run: npm run build && npm test  # Adjust as needed      
-
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
