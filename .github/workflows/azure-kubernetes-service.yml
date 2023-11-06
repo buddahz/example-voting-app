@@ -11,6 +11,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+  permissions:
+    id-token: write # This is required for requesting the JWT
+    contents: read  # This is required for actions/checkout
+
+
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
