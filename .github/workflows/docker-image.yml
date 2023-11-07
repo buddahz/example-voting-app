@@ -34,6 +34,7 @@ jobs:
           for dir in result vote worker; do
             cd "$dir"
             docker build -t votingapptest.azurecr.io/$dir:${{ github.run_number }}  -t votingapptest.azurecr.io/$dir:latest .
+            docker push votingapptest.azurecr.io/$dir:${{ github.run_number }}
             docker push votingapptest.azurecr.io/$dir:latest
             cd ..
           done
