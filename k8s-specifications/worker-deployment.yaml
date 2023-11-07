@@ -16,5 +16,5 @@ spec:
     spec:
       containers:
       - image: votingapptest.azurecr.io/worker:latest
-        imagePullPolicy: always
+        imagePullPolicy: Always
         name: worker
