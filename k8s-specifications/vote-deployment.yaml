@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - image: votingapptest.azurecr.io/vote:latest
+        imagePullPolicy: always
         name: vote
         ports:
         - containerPort: 80
