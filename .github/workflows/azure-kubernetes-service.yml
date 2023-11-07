@@ -1,7 +1,11 @@
 name: Deploy to AKS
 
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
+  workflow_run:
+    workflows: ["Build and Push Docker Images to Azure Container Registry"]
+    types:
+      - completed
   
 jobs:
   deploy:
